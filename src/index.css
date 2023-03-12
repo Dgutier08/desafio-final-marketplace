@@ -47,3 +47,16 @@ footer {
   padding: 20px 0;
   background: #1e1e1e;
 }
+
+.wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 500px;
+}
+
+form {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}

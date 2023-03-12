@@ -1,12 +1,13 @@
 import React, { useState } from "react";
+import { Container, Form, FormGroup, Label, Input, Button } from "reactstrap";
 
-function RegistrationForm() {
+function RegistrationForm({ handleRegister }) {
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
     lastName: "",
-    address: "",
     email: "",
-    phone: "",
+    password: "",
+    confirmPassword: "",
   });
   const [errors, setErrors] = useState({});
 
@@ -22,90 +23,96 @@ function RegistrationForm() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const validationErrors = {};
 
-    if (!formData.name) {
-      validationErrors.name = "Please enter your name";
+    if (!formData.firstName) {
+      validationErrors.firstName = "Please enter your first name";
     }
     if (!formData.lastName) {
       validationErrors.lastName = "Please enter your last name";
     }
-    if (!formData.address) {
-      validationErrors.address = "Please enter your address";
-    }
     if (!emailRegex.test(formData.email)) {
       validationErrors.email = "Please enter a valid email address";
     }
-    if (!formData.phone) {
-      validationErrors.phone = "Please enter your phone number";
+    if (!formData.password) {
+      validationErrors.password = "Please enter your password";
+    }
+    if (formData.password !== formData.confirmPassword) {
+      validationErrors.confirmPassword = "Passwords do not match";
     }
 
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
     } else {
-      // Handle form submission
+      handleRegister(formData); // Llamar a la función handleRegister para guardar la información del usuario
     }
-    console.log(Error)
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="Nombre">Name:</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleInputChange}
-        />
-        {errors.name && <span>{errors.name}</span>}
-      </div>
-      <div>
-        <label htmlFor="Apellido">Last Name:</label>
-        <input
-          type="text"
-          id="lastName"
-          name="lastName"
-          value={formData.lastName}
-          onChange={handleInputChange}
-        />
-        {errors.lastName && <span>{errors.lastName}</span>}
-      </div>
-      <div>
-        <label htmlFor="direccion">Address:</label>
-        <input
-          type="text"
-          id="address"
-          name="address"
-          value={formData.address}
-          onChange={handleInputChange}
-        />
-        {errors.address && <span>{errors.address}</span>}
-      </div>
-      <div>
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleInputChange}
-        />
-        {errors.email && <span>{errors.email}</span>}
-      </div>
-      <div>
-        <label htmlFor="phone">Phone:</label>
-        <input
-          type="text"
-          id="phone"
-          name="phone"
-          value={formData.phone}
-          onChange={handleInputChange}
-        />
-        {errors.phone && <span>{errors.phone}</span>}
-      </div>
-      <button type="submit">Registrar</button>
-    </form>
-  
-  );
-}
-export default RegistrationForm;
+    <Container>
+      <Form onSubmit={handleSubmit}>
+        <FormGroup>
+          <h1>Register</h1>
+          <br></br>
+          <Label for="firstName">First Name:</Label>
+          <Input
+            type="text"
+            id="firstName"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleInputChange}
+            className="form-control"
+          />
+          {errors.firstName && <span>{errors.firstName}</span>}
+        </FormGroup>
+        <FormGroup>
+          <Label for="lastName">Last Name:</Label>
+          <Input
+            type="text"
+            id="lastName"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleInputChange}
+            className="form-control"
+          />
+          {errors.lastName && <span>{errors.lastName}</span>}
+        </FormGroup>
+        <FormGroup>
+          <Label for="email">Email:</Label>
+          <Input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            className="form-control"
+          />
+          {errors.email && <span>{errors.email}</span>}
+        </FormGroup>
+        <FormGroup>
+          <Label for="password">Password:</Label>
+          <Input
+            type="password"
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleInputChange}
+            className="form-control"
+          />
+          {errors.password && <span>{errors.password}</span>}
+        </FormGroup>
+        <FormGroup>
+          <Label for="confirmPassword">Confirm Password:</Label>
+          <Input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            value={formData.confirmPassword}
+            onChange={handleInputChange}
+            className="form-control"
+          />
+          {errors.confirmPassword && <span>{errors.confirmPassword}</span>}
+        </FormGroup>
+        <Button type="submit">Registrar</Button>
+        </Form>
+        </Container>
+  )}
+  export default RegistrationForm();

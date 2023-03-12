@@ -11,8 +11,9 @@ import Productosquetegustan from "./Paginas/Privadas/likes-productos";
 import Seguimientos from "./Paginas/Privadas/Seguimientos";
 import Publicaciones from "./Paginas/Privadas/Publicaciones";
 import Navar from "./layouts/Navbar";
-import Login from "./Paginas/Publicas/Inicio de seccion";
+//import Login from "./Paginas/Publicas/Inicio de seccion";
 import RegistrationForm from "./layouts/RegistrationForm";
+import LoginForm from "./layouts/loginForm";
 
 function App() {
   return (
@@ -26,15 +27,15 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/nosotros" element={<SobreNostros />} />
               <Route path="/productos" element={<Productos />} />
-              <Route path="/registrar" component={RegistrationForm} />
-              
+              <Route path="/registrar" element={<RegistrationForm />} />
+              <Route path="/login" element={<LoginForm />} />
               -- rutas Privadas--
               <Route path="/perfil" element={<Perfil />} />
               <Route path="/compras" element={<Compras />} />
               <Route path="/likes" element={<Productosquetegustan />} />
               <Route path="/seguimientos" element={<Seguimientos />} />
               <Route path="/publicar" element={<Publicaciones />} />
-              <Route path="/login" element={<Login />} />
+              {/* <Route path="/login" element={<Login />} /> */}
             </Routes>
           </ContextProvider>
         </div>

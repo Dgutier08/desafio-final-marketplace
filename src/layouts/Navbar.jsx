@@ -1,5 +1,7 @@
+import React from "react";
 import { Link } from 'react-router-dom';
 import { Navbar, Container } from "react-bootstrap";
+//import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
 //import RegistrationForm from "./RegistrationForm";
 
 export default function Navigation() {
@@ -16,14 +18,15 @@ export default function Navigation() {
                   🏠 Home
                 </Link>
               </li>
+
               <li className="nav-item">
-                <Link to="/Contact" className="nav-link text-white">
-                  📙 Contact
+                <Link to="/perfil" className="nav-link text-white">
+                  🔑 perfil
                 </Link>
               </li>
               <li className="nav-item">
                 <Link to="/registrar" className="nav-link text-white">
-                  📝 Registrar
+                  🔑 registrar
                 </Link>
               </li>
               <li className="nav-item">
