@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
-export const Context = createContext();
+export const Context = createContext(null);
+//import { Contex, ContextProvider } from "../Context/Context";
 
 export const ContextProvider = ({ children }) => {
   const [dato, setData] = useState([]);
@@ -33,3 +34,4 @@ export const ContextProvider = ({ children }) => {
     </Context.Provider>
   );
 };
+export default ContextProvider;
