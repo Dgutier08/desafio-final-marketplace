@@ -10,8 +10,16 @@ import img5 from "../../Components/assets/Img/banner5.jpg";
 
 export default function Home() {
   const navigate = useNavigate();
-  const { dato } = useContext(Context);
+  const dato = useContext(Context);
+
+  if (!dato || !dato.products) {
+    return null; // or render a loading/error component
+  }
+
   const productos = dato.products;
+  // rest of the code
+
+
 
   return (
     <>
@@ -43,7 +51,7 @@ export default function Home() {
           <main className="col-md-10">
             <div
               id="carouselExampleCaptions"
-              class="carousel slide"
+              className="carousel slide"
               data-bs-ride="carousel"
             >
               <div className="carousel-indicators">
@@ -51,7 +59,7 @@ export default function Home() {
                   type="button"
                   data-bs-target="#carouselExampleCaptions"
                   data-bs-slide-to="0"
-                  class="active"
+                  className="active"
                   aria-current="true"
                   aria-label="Slide 1"
                 ></button>
