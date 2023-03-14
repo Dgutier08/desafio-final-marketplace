@@ -1,48 +1,57 @@
 import React from "react";
-import { Link } from 'react-router-dom';
-import { Navbar, Container } from "react-bootstrap";
-//import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
-//import RegistrationForm from "./RegistrationForm";
+import logo from "../Components/assets/Img/logo.png";
+import { useNavigate } from "react-router-dom";
+import { AuthContex } from "./context/AuthContexProvider.jsx";
 
-export default function Navigation() {
+const Navbar = () => {
+  const { setIsAuth } = React.useContext(AuthContex);
+  const navigate = useNavigate();
+  const logout = () => {
+    localStorage.removeItem("tk");
+    setIsAuth(false);
+    navigate("/");
+  };
+
   return (
-    <>
-      <Navbar bg="danger" expand="lg">
-        <Container>
-          <Navbar.Brand href="#"> </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <Link to='/' className='nav-link text-white'>
-                  🏠 Home
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link to="/perfil" className="nav-link text-white">
-                  🔑 perfil
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/registrar" className="nav-link text-white">
-                  🔑 registrar
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/login" className="nav-link text-white">
-                  🔑 Login
-                </Link>
-              </li>
-            </ul>
-            <div className="d-flex">
-              <Link to="/LoginOFf" className="nav-link text-white">
-                Login Off 🍰
-              </Link>
+    <div className="navbar bg-neutral text-neutral-content">
+      <div className="flex-1">
+        <a className="btn btn-ghost normal-case text-xl">Test Login</a>
+      </div>
+      <div className="flex-none gap-2">
+        <div className="form-control">
+          <input
+            type="text"
+            placeholder="Search"
+            className="input input-bordered"
+          />
+        </div>
+        <div className="dropdown dropdown-end">
+          <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+            <div className="w-10 rounded-full">
+              <img src={logo} />
             </div>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    </>
-  )
-}
+          </label>
+          <ul
+            tabIndex={0}
+            className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-neutral rounded-box w-52"
+          >
+            <li>
+              <a className="justify-between">
+                Profile
+                <span className="badge">New</span>
+              </a>
+            </li>
+            <li>
+              <a>Settings</a>
+            </li>
+            <li>
+              <a onClick={logout}>Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Navbar;
