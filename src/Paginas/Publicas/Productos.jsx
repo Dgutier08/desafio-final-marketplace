@@ -10,40 +10,38 @@ export default function Productos() {
   console.log(productos);
   return (
     <>
-      <h1>soy la pagina productos</h1>
-      <div className="row">
-        {productos?.map((intem, index) => (
-          <div
-            key={index}
-            className="col-6 col-sm-3 col-lg-4 cartas-pagina-productos"
-          >
+      <h6 className="text-center mt-5"> Productos</h6>
+      <div className="row justify-content-center">
+        {productos?.map((item, index) => (
+          <div key={index} className="col-sm-6 col-md-4 col-lg-3 mb-3">
             <div className="card">
               <div className="card-body">
                 <div
                   style={{
-                    backgroundImage: `url(${intem.productUrl})`,
-                    width: "90%",
-                    height: "130px",
+                    backgroundImage: `url(${item.productUrl})`,
+                    width: "100%",
+                    height: "150px",
                     backgroundSize: "cover",
                   }}
                 ></div>
-                <div className="textos-cartas">
-                  <p className="card-title">{intem.nombre}</p>
-
-                  <p className="card-title">$Precio:{intem.precio}</p>
+                <div className="textos-cartas mt-3">
+                  <h5 className="card-title">{item.nombre}</h5>
+                  {/* <div class="card-text">$Precio: {item.precio}</div> */}
+                  <p className="card-text">$Precio: {item.precio}</p>
                 </div>
                 <button
-                  className="boton-cartas"
-                  onClick={() => navigate(`/auto/${intem.id}`)}
+                  className="btn btn-primary btn-block mt-3"
+                  onClick={() => navigate(`/auto/${item.id}`)}
                 >
-                  <span className="vermas"> Ver más</span>
+                  Ver más
                 </button>
-                <hr></hr>
               </div>
             </div>
           </div>
         ))}
       </div>
+      <Footer />
+          
     </>
   );
 }

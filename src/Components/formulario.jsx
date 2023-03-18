@@ -16,6 +16,7 @@ const Formulario_cliente = (props) => {
       password: inputpassword,
       id: 2,
     };
+
     props.agregar_nombre(json);
 
     setInputNombre("");
@@ -25,40 +26,46 @@ const Formulario_cliente = (props) => {
   };
   return (
     <>
-      <h3> Registrar cliente</h3>
-      <form onSubmit={manejarFormulario} className="row  ">
-        <div class="container">
+      <p> Registrar cliente</p>
+
+      <form onSubmit={manejarFormulario} className="row form-register ">
+        <div>
+          <img src="" alt="" />
+        </div>
+        <div class="container c-form ">
           <input
-            type="name"
+            type="text"
             value={inputnombre}
             onChange={(e) => setInputNombre(e.target.value)}
-            className="col-8 input"
-            placeholder="name"
+            className=" input"
+            placeholder="Nombre"
           />
 
           <input
-            type="email"
+            type="text"
             value={inputage}
             onChange={(e) => setInputcorreo(e.target.value)}
             className="col-8 input"
             placeholder="Email"
           />
           <input
-            type="username"
+            type="text"
             value={inputusername}
             onChange={(e) => setInputcomentario(e.target.value)}
             className="col-10 input"
-            placeholder="username"
+            placeholder="Comentario"
           />
           <input
-            type="password"
+            type="text"
             value={inputpassword}
             onChange={(e) => setInputcotizacion(e.target.value)}
             className="col-8 input"
-            placeholder="password"
+            placeholder="cotizacion"
           />
 
-          <button className="col-8 btn-primary">Agregar Usuario</button>
+          <button className="col-8 btn-primary add_client_register">
+            Agregar Cliente
+          </button>
         </div>
       </form>
     </>

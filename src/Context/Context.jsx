@@ -1,11 +1,13 @@
 import { createContext, useEffect, useState } from "react";
-import Formulario_cliente from "../Paginas/Publicas/Registra";
+
 import axios from "axios";
 export const Context = createContext();
 
 export const ContextProvider = ({ children }) => {
   const [dato, setData] = useState([]);
   const [usuario, setUsuario] = useState([]);
+  const [productos, setProductos] = useState([]);
+  const [inicioseccion, setInicioseccion] = useState(false);
 
   const url = "/db.json";
   const consultarautos = async (url) => {
@@ -15,6 +17,7 @@ export const ContextProvider = ({ children }) => {
       const { data } = await res;
       setData(data);
       setUsuario(data.usuario);
+      setProductos(data.products);
     } catch (error) {
       throw new Error("ha fallado la conexion con los datos", { cause: error });
     }
@@ -25,9 +28,20 @@ export const ContextProvider = ({ children }) => {
 
   console.log(dato);
   console.log(usuario);
+  console.log(productos);
 
   return (
-    <Context.Provider value={{ dato, usuario, setUsuario }}>
+    <Context.Provider
+      value={{
+        dato,
+        usuario,
+        setUsuario,
+        inicioseccion,
+        setInicioseccion,
+        productos,
+        setProductos,
+      }}
+    >
       {children}
     </Context.Provider>
   );

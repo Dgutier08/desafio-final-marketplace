@@ -6,6 +6,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: auto;
+
+  overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
 code {
@@ -28,31 +30,22 @@ code {
   width: 30px;
   height: 30px;
 }
+
 main {
   background: #ffffff;
   color: #ffffff;
   padding: 20px 0;
   height: 1630px;
 }
-aside {
-  background: #2f4046;
-  padding: 60px 0;
-  color: #0d47a1;
-  height: 1630px;
-}
-
-footer {
-  padding: 20px 0;
-  background: #1e1e1e;
-}
 .cartas {
   margin-top: 5px;
 }
 .card {
-  background: #fff9f9;
+  background: #edf3f7;
+  color: #110f0f;
 }
 .card-title {
-  color: #1e1e1e;
+  color: #110f0f;
 }
 .textos-cartas {
   display: flex;
@@ -60,7 +53,22 @@ footer {
   justify-content: center;
   font-size: 10px;
 }
-.cartas-pagina-productos {
+.inputs-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+.input {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  margin-top: 10px;
+}
+.add_client_register {
+  margin-top: 10px;
+  width: 300px;
 }
 .boton-cartas {
   border: none;
@@ -112,6 +120,27 @@ footer {
 .menu-aside {
   margin-top: 60px;
 }
+aside {
+  background: #2f4046;
+  padding: 60px 0;
+  color: #0d47a1;
+  height: 1993px;
+}
+
+footer {
+  padding: 20px 0;
+  background: #ffffff;
+  color: #ffff;
+}
+.banner6 {
+  width: 100%;
+  height: 300px;
+  background: #45adaa;
+}
+.ChildernImg-banner6-Footer {
+  width: 100%;
+  height: 100%;
+}
 @media only screen and (max-width: 700px) {
   main {
     height: auto;
@@ -127,4 +156,49 @@ footer {
   .boton-parrafo-banner {
     padding: 5px;
   }
+  .ChildernImg-banner6-Footer {
+    display: none;
+  }
+  .banner6 {
+    display: none;
+  }
+  .cartas {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+  }
+}
+
+.formulario {
+  background: #0d47a1;
+  display: flex;
+  flex-direction: column;
+}
+
+.imagen-carta img {
+  width: 250px;
+  height: 250px;
+  width: 600px;
+  height: 370px;
+  border: 1px solid #2f4046;
+}
+.imagen-texto p {
+  display: flex;
+  flex-direction: column;
+  font-size: 8px;
+}
+.imagen-texto label {
+  font-size: 12px;
+}
+.boton-detalle-producto {
+  background: #45adaa;
+}
+.padre {
+  height: auto;
+}
+.productos-registrar {
+  background: #3da3a0;
+}
+.form-register {
+  background: hsl(49, 100%, 64%);
 }

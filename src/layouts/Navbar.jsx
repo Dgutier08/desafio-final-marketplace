@@ -1,57 +1,56 @@
-import React from "react";
-import logo from "../Components/assets/Img/logo.png";
-import { useNavigate } from "react-router-dom";
-import { AuthContex } from "./context/AuthContexProvider.jsx";
+import { Link } from "react-router-dom";
 
-const Navbar = () => {
-  const { setIsAuth } = React.useContext(AuthContex);
-  const navigate = useNavigate();
-  const logout = () => {
-    localStorage.removeItem("tk");
-    setIsAuth(false);
-    navigate("/");
-  };
-
+export default function Navbar() {
   return (
-    <div className="navbar bg-neutral text-neutral-content">
-      <div className="flex-1">
-        <a className="btn btn-ghost normal-case text-xl">Test Login</a>
-      </div>
-      <div className="flex-none gap-2">
-        <div className="form-control">
-          <input
-            type="text"
-            placeholder="Search"
-            className="input input-bordered"
-          />
-        </div>
-        <div className="dropdown dropdown-end">
-          <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
-              <img src={logo} />
-            </div>
-          </label>
-          <ul
-            tabIndex={0}
-            className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-neutral rounded-box w-52"
-          >
-            <li>
-              <a className="justify-between">
-                Profile
-                <span className="badge">New</span>
-              </a>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <div className="container-fluid">
+        <Link className="navbar-brand" to="/">
+          <i class="fa-solid fa-house fa-fw" title="Home"></i>
+          Home
+        </Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-mdb-toggle="collapse"
+          data-mdb-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i className="fas fa-bars"></i>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link className="nav-link" to="/productos" aria-current="true">
+                Products
+              </Link>
             </li>
-            <li>
-              <a>Settings</a>
+            <li className="nav-item">
+              <Link className="nav-link" to="/registrarse">
+                Registrarse
+              </Link>
             </li>
-            <li>
-              <a onClick={logout}>Logout</a>
+            <li className="nav-item">
+              <Link className="nav-link" to="/formulario">
+                LogIn
+                <a>
+                  {" "}
+                  <i class="fas fa-user"></i>
+                  <span></span>
+                </a>
+              </Link>
             </li>
+            <li className="nav-item"></li>
           </ul>
         </div>
+        <a class="nav-link nav-item me-3 me-lg-4" href="#Detalleproducto">
+          <span class="badge badge-pill bg-danger">1</span>
+          <span>
+            <i class="fas fa-shopping-cart"></i>
+          </span>
+        </a>
       </div>
-    </div>
+    </nav>
   );
-};
-
-export default Navbar;
+}
